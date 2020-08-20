@@ -1,0 +1,20 @@
+{
+    "name": "zijinghua_dev/zwechat_client",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Zijinghua\\Zwechat\\Client\\": "./src"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zijinghua\\Zwechat\\Client\\ServiceProvider"
+            ]
+        }
+    }
+}
