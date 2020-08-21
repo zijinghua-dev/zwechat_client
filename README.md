@@ -1,6 +1,6 @@
 #初始化工作
 
->(1) 使用php artisan vendor:pulish --provider='Zijinghua\Zwechat\Client\ServiceProvider'发布包
+>(1) 使用php artisan vendor:publish --provider='Zijinghua\Zwechat\Client\ServiceProvider'发布包
 
 >(2) 根据实际需要，在.env中增加WECHAT_SERVER_CENTER_BASE_URL、WECHAT_APP_ID配置，格式如下:
 
@@ -65,7 +65,7 @@
 
 
 (4) 接口：获取跳转到微信授权的url，
->- API：api/zijinghua/wechat/client/jssdk-config。
+>- API：api/zijinghua/wechat/client/redirect-url。
 >- 请求方式：GET。
 >- 请求参数：
 >- >- url：调用微信jssdk所在页面对应的URL；
