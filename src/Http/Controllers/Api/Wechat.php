@@ -16,8 +16,18 @@ class Wechat extends Controller
      */
     public function openId(Requests\Wechat\OpenId $request, SnsService $service)
     {
+        $res = $service->getOpenId($request->input('code'), config('wechat-client.wechat_app_id'));
+        if (floor($service->statusCode/200)==1 && isset($res['open_id'])) {
+            $res['wechat_id'] = $res['open_id'];
+            $res = auth('zguard')->attemptExternal($res);
+            return response()->json(
+                ['token' => $res['token']],
+                $service->statusCode
+            );
+        }
+        \Log::critical('调微信服务中心获取openid接口返回'.$service->statusCode, $res);
         return response()->json(
-            $service->getOpenId($request->input('code'), config('wechat-client.wechat_app_id')),
+            $res,
             $service->statusCode
         );
     }
@@ -30,8 +40,19 @@ class Wechat extends Controller
      */
     public function unionId(Requests\Wechat\OpenId $request, SnsService $service)
     {
+        $res = $service->getUnionId($request->input('code'), config('wechat-client.wechat_app_id'));
+        if (floor($service->statusCode/200)==1 && isset($res['unionid'])) {
+            $res['wechat_id'] = $res['unionid'];
+            $res = array_reverse($res);
+            $res = auth('zguard')->attemptExternal($res);
+            return response()->json(
+                ['token' => $res['token']],
+                200
+            );
+        }
+        \Log::critical('调微信服务中心获取unionid接口返回'.$service->statusCode, $res);
         return response()->json(
-            $service->getUnionId($request->input('code'), config('wechat-client.wechat_app_id')),
+            $res,
             $service->statusCode
         );
     }

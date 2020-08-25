@@ -14,7 +14,7 @@
 >- 请求方式：GET。
 >- 请求参数：
 >- >- code：微信授权code
->- 正常返回：{"openid":"openid"}\
+>- 正常返回：{"open_id":"openid"}\
 >- 异常返回：{"message":"message", "errors":{"code":"异常code","message":"message"}}
 
 (2) 接口：获取微信unionid，

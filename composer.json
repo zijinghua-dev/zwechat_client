@@ -8,7 +8,8 @@
         }
     },
     "require": {
-        "guzzlehttp/guzzle": "*"
+        "guzzlehttp/guzzle": "*",
+        "zijinghua-dev/voyager": "*"
     },
     "extra": {
         "laravel": {
