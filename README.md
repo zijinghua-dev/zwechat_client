@@ -14,7 +14,7 @@
 >- 请求方式：GET。
 >- 请求参数：
 >- >- code：微信授权code
->- 正常返回：{"open_id":"openid"}\
+>- 正常返回：{"token":"token"}
 >- 异常返回：{"message":"message", "errors":{"code":"异常code","message":"message"}}
 
 (2) 接口：获取微信unionid，
@@ -22,22 +22,7 @@
 >- 请求方式：GET。
 >- 请求参数：
 >- >- code：微信授权code
->- 正常返回：
-```json
-{
-    "openid": "openid",
-    "nickname": "昵称",
-    "sex": 1,
-    "language": "zh_CN",
-    "city": "city",
-    "province": "province",
-    "country": "country",
-    "headimgurl": "微信头像",
-    "privilege": [],
-    "unionid": "unionid"
-}
-```
-                 
+>- 正常返回：{"token":"token"}   
 >- 异常返回：{"message":"message", "errors":{"code":"异常code","message":"message"}}
 
 (3) 接口：获取微信jssdk配置，
