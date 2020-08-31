@@ -5,11 +5,15 @@
     "autoload": {
         "psr-4": {
             "Zijinghua\\Zwechat\\Client\\": "./src"
-        }
+        },
+        "files": [
+            "src/Helpers/helper.php"
+        ]
     },
     "require": {
         "guzzlehttp/guzzle": "*",
-        "zijinghua-dev/voyager": "*"
+        "zijinghua-dev/voyager": "*",
+        "illuminate/support": "^5.2|^6"
     },
     "extra": {
         "laravel": {
