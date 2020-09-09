@@ -19,9 +19,11 @@ class Wechat extends Controller
         $res = $service->getOpenId($request->input('code'), config('wechat-client.wechat_app_id'));
         if (floor($service->statusCode/200)==1 && isset($res['open_id'])) {
             $res['wechat_id'] = $res['open_id'];
+            $res = array_reverse($res);
             $res = auth(getAuth())->attemptExternal($res);
+            $group = (new GroupService())->getUserGroup($res['user']);
             return response()->json(
-                ['token' => $res['token']],
+                ['token' => $res['token'], 'user_group'=>$group->id],
                 $service->statusCode
             );
         }
@@ -45,9 +47,10 @@ class Wechat extends Controller
             $res['wechat_id'] = $res['unionid'];
             $res = array_reverse($res);
             $res = auth(getAuth())->attemptExternal($res);
+            $group = (new GroupService())->getUserGroup($res['user']);
             return response()->json(
-                ['token' => $res['token']],
-                200
+                ['token' => $res['token'], 'user_group'=>$group->id],
+                $service->statusCode
             );
         }
         \Log::critical('调微信服务中心获取unionid接口返回'.$service->statusCode, $res);
