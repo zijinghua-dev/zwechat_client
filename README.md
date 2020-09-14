@@ -14,7 +14,7 @@
 >- 请求方式：GET。
 >- 请求参数：
 >- >- code：微信授权code
->- 正常返回：{"token":"token"}
+>- 正常返回：{"token":"token", "user_group":"个人组id"}
 >- 异常返回：{"message":"message", "errors":{"code":"异常code","message":"message"}}
 
 (2) 接口：获取微信unionid，
@@ -22,7 +22,7 @@
 >- 请求方式：GET。
 >- 请求参数：
 >- >- code：微信授权code
->- 正常返回：{"token":"token"}   
+>- 正常返回：{"token":"token", "user_group":"个人组id"}
 >- 异常返回：{"message":"message", "errors":{"code":"异常code","message":"message"}}
 
 (3) 接口：获取微信jssdk配置，
@@ -58,16 +58,6 @@
 >- 正常返回：
 ```json
 {
-    "debug": false,
-    "beta": false,
-    "jsApiList": [
-        "updateAppMessageShareData",
-        "updateTimelineShareData"
-    ],
-    "appId": "wxc6aecc4a0df02cda",
-    "nonceStr": "eEoJwxRBFi",
-    "timestamp": 1597213070,
-    "url": "http://local.d2p.shop:8000",
-    "signature": "e094e67b7b37484f1507ab342d969dd1dedce04c"
+   "redirect_uri":"跳转的url"
 }
 ```
