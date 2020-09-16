@@ -3,6 +3,7 @@
 namespace Zijinghua\Zwechat\Client\Http\Controllers\Api;
 
 use Illuminate\Routing\Controller;
+use Zijinghua\Zvoyager\Http\Services\GroupService;
 use Zijinghua\Zwechat\Client\Http\Requests;
 use Zijinghua\Zwechat\Client\Services\Wechat\SnsService;
 
