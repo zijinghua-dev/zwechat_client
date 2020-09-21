@@ -4,6 +4,9 @@ namespace Zijinghua\Zwechat\Client\Services\Wechat;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\ResponseInterface;
+use Zijinghua\Zwechat\Client\Exceptions\InvalidConfigException;
+use \Zijinghua\Zwechat\Client\Exceptions\Wechat\InvalidCodeException;
 
 /**
  * @method array getOpenId(string $code, string $appId)
@@ -51,9 +54,14 @@ class SnsService
         } catch (RequestException $exception) {
             $response = $exception->getResponse();
         }
+        $responseData = json_decode($response->getBody()->getContents(), true);
+        if (is_array($responseData) && isset($responseData['errors'])) {
+            throw new InvalidCodeException(@$responseData['errors']['message'], is_array($responseData)? $responseData:[$responseData]);
+        }
 
         $this->statusCode = $response->getStatusCode();
-        return json_decode($response->getBody()->getContents(), true);
+
+        return $responseData;
     }
 
     public function jssdkConfig(string $appId, string $url)
