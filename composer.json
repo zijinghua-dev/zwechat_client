@@ -12,7 +12,6 @@
     },
     "require": {
         "guzzlehttp/guzzle": "*",
-        "zijinghua-dev/zvoyager": "^1.0.3",
         "illuminate/support": "^5.2|^6"
     },
     "extra": {
